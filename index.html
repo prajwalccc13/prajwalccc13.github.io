@@ -1,121 +1,483 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-theme="light" data-bs-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  
+  <!-- Basic SEO -->
+  <title>Prajwal Chaudhary | AI & Autonomous Systems Engineer</title>
+  <meta name="description" content="Portfolio of Prajwal Chaudhary, an AI Engineer based in Sydney. Specializing in LLM orchestration, Computer Vision, and autonomous agent systems." />
+  <meta name="keywords" content="Prajwal Chaudhary, AI Engineer, Machine Learning, LLM, Computer Vision, PyTorch, Python, Sydney, Macquarie University" />
+  <meta name="author" content="Prajwal Chaudhary" />
+  <meta name="theme-color" content="#ffffff" />
+  
+  <!-- Open Graph / Social Media Meta Tags -->
+  <meta property="og:title" content="Prajwal Chaudhary | AI Engineer" />
+  <meta property="og:description" content="Master of IT (AI) specializing in LLMs, Deep Learning, and Autonomous Agents." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://your-github-pages-url.github.io/" />
+  <!-- <meta property="og:image" content="link-to-your-preview-image.jpg" /> -->
+
+  <!-- JSON-LD for LLM Data Wrangling & Google Rich Snippets -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Prajwal Chaudhary",
+    "jobTitle": "AI Engineer",
+    "description": "Computer Engineer specializing in Artificial Intelligence, autonomous agents, and deep learning.",
+    "url": "https://your-github-pages-url.github.io/",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Sydney",
+      "addressCountry": "Australia"
+    },
+    "alumniOf": [
+      {
+        "@type": "CollegeOrUniversity",
+        "name": "Macquarie University",
+        "description": "Master of Information Technology in Artificial Intelligence"
+      },
+      {
+        "@type": "CollegeOrUniversity",
+        "name": "Nepal Engineering College"
+      }
+    ],
+    "knowsAbout": [
+      "Artificial Intelligence",
+      "Machine Learning",
+      "LLM Orchestration",
+      "Computer Vision",
+      "Python",
+      "PyTorch",
+      "TensorFlow"
+    ],
+    "hasCredential": {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "Certificate",
+      "name": "Google Advanced Data Analytics Certificate"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/prajwal-chaudhary-0543551aa",
+      "https://github.com/prajwaljpj",
+      "https://www.kaggle.com/prajwalch0325"
+    ]
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body style="background-color:#305F72;">
+
+<body>
+
+  <!-- Background Blueprint Pattern -->
+  <div class="bg-pattern" aria-hidden="true"></div>
+
+  <!-- ─── Navbar ─────────────────────────────────────── -->
+  <nav class="nav-wrap" aria-label="Main Navigation">
+    <div class="w">
+      <div class="nav-inner">
+        <a class="brand" href="#top" aria-label="Prajwal Chaudhary Home">Prajwal Chaudhary.</a>
+        <div class="nav-links">
+          <a href="#projects">Projects</a>
+          <a href="#timeline">Experience</a>
+          <a href="#publications">Research</a>
+          <a href="#arsenal">Skills</a>
+        </div>
+        <div class="nav-actions">
+          <button id="themeBtn" class="btn-ghost" style="padding: 6px 10px; border-radius: 6px;" aria-label="Toggle dark/light theme">
+            <i class="bi bi-sun" id="themeIcon" aria-hidden="true"></i>
+          </button>
+          <a class="btn-base btn-solid" href="prajwal_chaudhary_resume.pdf" download aria-label="Download Resume PDF">
+            <i class="bi bi-download" aria-hidden="true"></i> Resume
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Wrapping primary content in <main> for parsers -->
+  <main>
     
-    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: transparent;">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li>
-          </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
+    <!-- ─── Hero ───────────────────────────────────────── -->
+    <div class="w">
+      <header id="top" class="hero">
+        <div class="hero-eyebrow io">
+          <span class="status-dot" aria-hidden="true"></span> AI Engineer · Sydney, AU
         </div>
-      </nav> -->
-
-      <!-- <div >
-        <img src="a.jpg" class="img-fluid" alt="Responsive image">
-      </div> -->
-      
-
-      <!-- <div style="background-image: url('b.jpg'); width:100vw; height:100vh;)"> -->
-      <!-- <div>
-        <div class="container">
-          
-            
-          </div>
-          </div>
+        <h1 class="hero-title io io-d1">
+          Engineering<br>
+          <span class="text-gradient">Autonomous Intelligence.</span>
+        </h1>
+        <p class="hero-sub io io-d2">
+          Master of IT (AI) at Macquarie University. Specializing in LLM orchestration,
+          computer vision, and end-to-end deep learning pipelines.
+        </p>
+        <div class="hero-actions io io-d3">
+          <a href="#projects" class="btn-base btn-solid">View Projects</a>
+          <a href="#publications" class="btn-base">Research</a>
+          <a href="mailto:prajwalc133@gmail.com" class="btn-base btn-ghost">
+            prajwalc133@gmail.com <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </a>
         </div>
-      </div> -->
+      </header>
+    </div>
 
-      <div class="container" style="color: rgb(180, 191, 196);">
-        <div class="text-monospace text-uppercase" >
-          <text style="color:white;">Prajwal &nbsp; &nbsp;&nbsp; </text> 
-          About Me &nbsp; &nbsp; &nbsp; 
-          Contact
-        </div>
-      </div>
-      
-      <div class="container">
-        <div style="position: absolute;top:30vh;">
-          <h2 class="text-monospace text-secondary text">Hello! I am </h2>
-          <!-- <div class="float-right "><img src="ava.svg" alt=""></div> -->
-          <h1 class="text-uppercase text-bold" style="color: #F0B7A4;">Prajwal Chaudhary.</h1>
-          <h1 class="text-secondary text-monospace">I make things for the web.</h1>
-          <br><br>
-          <div class="text-monospace" style="color:rgb(148, 143, 138)">
-          I'am a software developer based in Kathmandu, Nepal specializing in <br>
-          building(and ocasionally designing) exceptional, high-quality <br>
-          websites and applications.
+    <hr class="divider">
 
-          <br><br><br><br><br><br><br><br><br><br><br><br>
-          <hr>
-          
-          <h3 class="text-monospace text-center" style="color: white">About Me</h3>
-          <br><br>
-          <p style="color: rgb(148, 143, 138)">
-            Spicy jalapeno bacon ipsum dolor amet biltong fatback duis, in jowl frankfurter ipsum. Pork loin swine in consectetur chuck venison. Sint pig deserunt, sunt short loin biltong kevin beef ribs turkey cupidatat t-bone tri-tip. Tail cillum shankle fatback corned beef eiusmod et biltong andouille excepteur cupidatat.
-          </p>
-          <p style="color: rgb(148, 143, 138)">
-            Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!
-          </p>
+    <!-- ─── Projects ───────────────────────────────────── -->
+    <div class="w">
+      <section id="projects" class="section" aria-labelledby="projects-heading">
+        <div class="section-label io" aria-hidden="true">01 — Selected Work</div>
+        <h2 id="projects-heading" class="section-heading io io-d1">Flagship projects.</h2>
 
-          <img src="me.jpg" alt="" height="350px" class="rounded mx-auto d-block border border-light">
+        <div class="card-grid">
 
-          <br><br><br><br><br>
-          <br><br><br><br><br><br><br><br><br><br>
-          <h3 class="text-monospace text-center" style="color: white">Get in Touch</h3>
-          <br><br>
-          <p style="color: rgb(148, 143, 138)">
-            <div class="container-fluid text-center">
-              Spicy jalapeno bacon ipsum dolor amet biltong fatback duis, in jowl frankfurter ipsum. Pork loin swine in consectetur chuck venison. Sint pig deserunt, sunt short loin biltong kevin beef ribs turkey cupidatat t-bone tri-tip. Tail cillum shankle fatback corned beef eiusmod et biltong andouille excepteur cupidatat.
+          <!-- Auto Agent ML (Now semantic <article>) -->
+          <article class="card io io-d1">
+            <div class="card-top">
+              <h3 class="card-title">Auto Agent ML</h3>
+              <span class="card-stat" aria-label="System Architecture">SYSTEM ARCH</span>
             </div>
-          </p>
-          <br><br>
-          <div class="align-content-center">
-            <button type="button" class="btn btn-outline-warning" style="color: #F0B7A4;">say Hello</button>
+            <p class="card-body">
+              A multi-agent system that automates the entire ML pipeline — from EDA and model training
+              to evaluation — using LLMs. Agents are orchestrated by a central coordinator that
+              dynamically generates executable Python from user intent.
+            </p>
+            <div class="tags" aria-label="Technologies Used">
+              <span class="tag">Python</span>
+              <span class="tag">LLMs</span>
+              <span class="tag">Multi-Agent</span>
+              <span class="tag">EDA</span>
+            </div>
+            <div class="code-block" aria-hidden="true">
+              <pre>[User Intent]
+   │
+[Orchestrator]
+   ├── EDA Agent
+   ├── Training Agent
+   └── Code Verifier</pre>
+            </div>
+            <div class="card-actions">
+              <a href="#" class="btn-base" target="_blank" rel="noreferrer" aria-label="View Auto Agent ML on GitHub">
+                <i class="bi bi-github" aria-hidden="true"></i> GitHub
+              </a>
+              <a href="#" class="btn-base" target="_blank" rel="noreferrer" aria-label="View Live Demo of Auto Agent ML">
+                <i class="bi bi-play-circle" aria-hidden="true"></i> Demo
+              </a>
+            </div>
+          </article>
+
+          <!-- Cauliflower Disease -->
+          <article class="card io io-d2">
+            <div class="card-top">
+              <h3 class="card-title">Cauliflower Disease Net</h3>
+              <span class="card-stat" aria-label="93% Accuracy Achieved">93% ACC</span>
+            </div>
+            <p class="card-body">
+              End-to-end CNN solution for disease detection in cauliflower crops. Uses transfer
+              learning for classification, SQL for experiment tracking, and integrates physical
+              hardware for image capture and automated pesticide application.
+            </p>
+            <div class="tags" aria-label="Technologies Used">
+              <span class="tag">TensorFlow</span>
+              <span class="tag">Computer Vision</span>
+              <span class="tag">Django</span>
+              <span class="tag">Flutter</span>
+              <span class="tag">SQL</span>
+            </div>
+            <div class="code-block" aria-hidden="true">
+              <pre>[Camera] → [Preprocess] → [CNN]
+     → [Classification]
+     → [Actuator / SQL log]</pre>
+            </div>
+            <div class="card-actions">
+              <a href="#" class="btn-base" target="_blank" rel="noreferrer" aria-label="View Cauliflower Disease Net on GitHub">
+                <i class="bi bi-github" aria-hidden="true"></i> GitHub
+              </a>
+              <a href="#" class="btn-base" target="_blank" rel="noreferrer" aria-label="View Live Demo of Cauliflower Disease Net">
+                <i class="bi bi-play-circle" aria-hidden="true"></i> Demo
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ─── Experience ──────────────────────────────────── -->
+    <div class="w">
+      <section id="timeline" class="section" aria-labelledby="experience-heading">
+        <div class="row g-5">
+          <div class="col-lg-7">
+            <div class="section-label io" aria-hidden="true">02 — Experience</div>
+            <h2 id="experience-heading" class="section-heading io io-d1">Research timeline.</h2>
+
+            <div class="timeline io io-d2">
+              <!-- Wrapping experience in article/time tags for parsers -->
+              <article class="t-item">
+                <time class="t-date" datetime="2025-02/2025-06">Feb 2025 — Jun 2025</time>
+                <h3 class="t-role">Research Intern</h3>
+                <div class="t-org">Macquarie University · Sydney, Australia</div>
+                <p class="t-desc">
+                  Collaborated on training robots for real-world task execution. Implemented a
+                  PyTorch pipeline for real-time video processing and robot training, exploring
+                  AI-driven solutions for automation and task optimisation.
+                </p>
+              </article>
+            </div>
           </div>
-          <br><br><br><br><br><br><br><br><br><br>
 
-        </div>>
+          <div class="col-lg-5">
+            <div class="section-label io" aria-hidden="true">Status</div>
+            <h2 class="section-heading io io-d1">Open to roles.</h2>
+            <aside class="recruiter-box io io-d2">
+              <div class="label-sm">Australian Work Rights</div>
+              <div class="big">Visa Subclass 485</div>
+              <p>Full-time work rights. Available for AI/ML Engineer, Computer Vision, and Autonomous Agent roles in Sydney or remote.</p>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ─── Publications ───────────────────────────────── -->
+    <div class="w">
+      <section id="publications" class="section" aria-labelledby="research-heading">
+        <div class="section-label io" aria-hidden="true">03 — Research</div>
+        <h2 id="research-heading" class="section-heading io io-d1">Publications.</h2>
+
+        <ul class="pub-list">
+          
+          <!-- Uses itemscope for ScholarlyArticle -->
+          <li class="pub-item io io-d1" itemscope itemtype="https://schema.org/ScholarlyArticle">
+            <div>
+              <h3 class="pub-title" itemprop="headline">Deep Learning CNN Models for Diseases Classification in Cauliflower Leaves</h3>
+              <p class="pub-meta">
+                <span itemprop="author">Ojha, T. R., Chaudhary, P., & Sharma, S.</span> 
+                (<span itemprop="datePublished">2025</span>). 
+                <em itemprop="publisher">Journal of Artificial Intelligence and Capsule Networks</em>, 7(1), 32–50.
+              </p>
+            </div>
+            <div class="pub-actions">
+              <button class="btn-base" type="button" data-bibtex="bib1" aria-label="Copy BibTeX Citation">
+                <i class="bi bi-clipboard" aria-hidden="true"></i> BibTeX
+              </button>
+              <a class="btn-base" href="#" target="_blank" rel="noreferrer" aria-label="View Research Paper">
+                <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+              </a>
+            </div>
+          </li>
+
+          <li class="pub-item io io-d2" itemscope itemtype="https://schema.org/ScholarlyArticle">
+            <div>
+              <h3 class="pub-title" itemprop="headline">Enabling Extreme Programming (XP) in Global Software Development (GSD) Practice</h3>
+              <p class="pub-meta">
+                <span itemprop="author">Ojha, T. R., & Chaudhary, P.</span> 
+                (<span itemprop="datePublished">2022</span>). 
+                <em itemprop="publisher">Journal of Advancement in Software Engineering and Testing</em>, 5(3), 1–11.
+              </p>
+            </div>
+            <div class="pub-actions">
+              <button class="btn-base" type="button" data-bibtex="bib2" aria-label="Copy BibTeX Citation">
+                <i class="bi bi-clipboard" aria-hidden="true"></i> BibTeX
+              </button>
+              <a class="btn-base" href="#" target="_blank" rel="noreferrer" aria-label="View Research Paper">
+                <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+              </a>
+            </div>
+          </li>
+
+        </ul>
+
+        <!-- Hidden BibTeX -->
+        <textarea id="bib1" class="d-none" aria-hidden="true">
+@article{ojha2025cauliflower,
+  title   = {Deep Learning CNN Models for Diseases Classification in Cauliflower Leaves},
+  author  = {Ojha, T. R. and Chaudhary, Prajwal and Sharma, S.},
+  journal = {Journal of Artificial Intelligence and Capsule Networks},
+  year    = {2025}, volume = {7}, number = {1}, pages = {32--50}
+}</textarea>
+
+        <textarea id="bib2" class="d-none" aria-hidden="true">
+@article{ojha2022xp,
+  title   = {Enabling Extreme Programming (XP) in Global Software Development (GSD) Practice},
+  author  = {Ojha, T. R. and Chaudhary, Prajwal},
+  journal = {Journal of Advancement in Software Engineering and Testing},
+  year    = {2022}, volume = {5}, number = {3}, pages = {1--11}
+}</textarea>
+      </section>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ─── Arsenal ─────────────────────────────────────── -->
+    <div class="w">
+      <section id="arsenal" class="section" aria-labelledby="skills-heading">
+        <div class="section-label io" aria-hidden="true">04 — Technical Arsenal</div>
+        <h2 id="skills-heading" class="section-heading io io-d1">Core stack.</h2>
+
+        <div class="skills-grid io io-d2" aria-label="List of technical skills">
+          <div class="skill-chip"><i class="bi bi-filetype-py" aria-hidden="true"></i> Python</div>
+          <div class="skill-chip"><i class="bi bi-cpu" aria-hidden="true"></i> PyTorch</div>
+          <div class="skill-chip"><i class="bi bi-diagram-3" aria-hidden="true"></i> TensorFlow</div>
+          <div class="skill-chip"><i class="bi bi-database" aria-hidden="true"></i> SQL</div>
+          <div class="skill-chip"><i class="bi bi-boxes" aria-hidden="true"></i> MongoDB</div>
+          <div class="skill-chip"><i class="bi bi-c-square" aria-hidden="true"></i> C / R</div>
+          <div class="skill-chip"><i class="bi bi-box-seam" aria-hidden="true"></i> Django</div>
+          <div class="skill-chip"><i class="bi bi-bar-chart" aria-hidden="true"></i> Pandas</div>
+        </div>
+
+        <div class="mt-5 io io-d3" style="font-size: 0.95rem; color: var(--text); background: var(--surface2); padding: 16px 20px; border-radius: var(--r); display: inline-flex; align-items: center; border: 1px solid var(--border);">
+          <i class="bi bi-patch-check-fill me-2" style="color: #0891b2; font-size: 1.1rem;" aria-hidden="true"></i>
+          Google Advanced Data Analytics Certificate &mdash; <time datetime="2025-01" style="color: var(--muted); margin-left: 6px;">January 2025</time>
+        </div>
+      </section>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ─── Insights ────────────────────────────────────── -->
+    <div class="w">
+      <section id="insights" class="section" aria-labelledby="insights-heading">
+        <div class="section-label io" aria-hidden="true">05 — AI Insights</div>
+        <h2 id="insights-heading" class="section-heading io io-d1">Technical deep dives.</h2>
+
+        <div class="card-grid">
+          <article class="card insight-card io io-d1" style="padding: 24px;">
+            <div class="section-label" style="margin-bottom: 10px; color: #0891b2;">Coming soon</div>
+            <h3 class="card-title" style="margin-bottom: 12px;">Agent Orchestration Patterns</h3>
+            <p class="card-body" style="margin-bottom: 20px; font-size: 0.9rem;">
+              A walkthrough of verification loops, safety checks, and reliability patterns
+              in multi-agent LLM systems.
+            </p>
+            <div class="card-actions">
+              <a href="#" class="btn-base" aria-label="Read on Medium"><i class="bi bi-medium" aria-hidden="true"></i> Medium</a>
+              <a href="#" class="btn-base" aria-label="View Gist"><i class="bi bi-file-earmark-code" aria-hidden="true"></i> Gist</a>
+            </div>
+          </article>
+          
+          <article class="card insight-card io io-d2" style="padding: 24px;">
+            <div class="section-label" style="margin-bottom: 10px; color: #0891b2;">Coming soon</div>
+            <h3 class="card-title" style="margin-bottom: 12px;">Real-time Vision for Robotics</h3>
+            <p class="card-body" style="margin-bottom: 20px; font-size: 0.9rem;">
+              Notes on latency budgets, batching strategies, and deployment
+              tradeoffs for live PyTorch video pipelines.
+            </p>
+            <div class="card-actions">
+              <a href="#" class="btn-base" aria-label="Read Write-up"><i class="bi bi-journal-code" aria-hidden="true"></i> Write-up</a>
+              <a href="#" class="btn-base" aria-label="View Code"><i class="bi bi-github" aria-hidden="true"></i> Code</a>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ─── Footer ──────────────────────────────────────── -->
+  <hr class="divider">
+  <div class="w">
+    <footer aria-label="Site Footer">
+      <div class="footer-inner">
+        <div>
+          <address style="font-style: normal;">
+            <div class="footer-name">Prajwal Chaudhary</div>
+            <div class="footer-city">Sydney, Australia</div>
+          </address>
+        </div>
+        <div class="footer-links">
+          <a href="https://www.linkedin.com/in/prajwal-chaudhary-0543551aa" target="_blank" rel="noreferrer" aria-label="LinkedIn Profile">
+            <i class="bi bi-linkedin" aria-hidden="true"></i> LinkedIn
+          </a>
+          <a href="https://github.com/prajwaljpj" target="_blank" rel="noreferrer" aria-label="GitHub Profile">
+            <i class="bi bi-github" aria-hidden="true"></i> GitHub
+          </a>
+          <a href="https://www.kaggle.com/prajwalch0325" target="_blank" rel="noreferrer" aria-label="Kaggle Profile">
+            <i class="bi bi-bar-chart-fill" aria-hidden="true"></i> Kaggle
+          </a>
+          <a href="mailto:prajwalc133@gmail.com" aria-label="Send Email">
+            <i class="bi bi-envelope" aria-hidden="true"></i> Email
+          </a>
+        </div>
+        <div class="footer-copy">
+          © 2026 Prajwal Chaudhary — Minimal by design.
+        </div>
       </div>
+    </footer>
+  </div>
 
+  <!-- ─── Scripts ─────────────────────────────────────── -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // ── Theme ──
+    const root = document.documentElement;
+    const themeIcon = document.getElementById('themeIcon');
 
+    (function initTheme() {
+      // Default to light mode 
+      const saved = localStorage.getItem('pc-theme');
+      const defaultTheme = 'light';
+      applyTheme(saved || defaultTheme);
+    })();
 
+    function applyTheme(t) {
+      root.setAttribute('data-theme', t);
+      root.setAttribute('data-bs-theme', t);
+      document.querySelector('meta[name="theme-color"]')
+        .setAttribute('content', t === 'dark' ? '#000000' : '#ffffff');
+        
+      if(themeIcon) {
+        themeIcon.className = t === 'dark' ? 'bi bi-moon-stars' : 'bi bi-sun';
+      }
+    }
 
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    document.getElementById('themeBtn').addEventListener('click', () => {
+      const cur = root.getAttribute('data-theme') || 'light';
+      const next = cur === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+      localStorage.setItem('pc-theme', next);
+    });
+
+    // ── Copy BibTeX ──
+    document.querySelectorAll('[data-bibtex]').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const id = btn.getAttribute('data-bibtex');
+        const text = document.getElementById(id).value.trim();
+        try {
+          await navigator.clipboard.writeText(text);
+          const orig = btn.innerHTML;
+          btn.innerHTML = '<i class="bi bi-check2"></i> Copied';
+          btn.disabled = true;
+          setTimeout(() => { btn.innerHTML = orig; btn.disabled = false; }, 1500);
+        } catch (_) {}
+      });
+    });
+
+    // ── Intersection Observer ──
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.10, rootMargin: '0px 0px -5% 0px' });
+
+    document.querySelectorAll('.io').forEach(el => observer.observe(el));
+  </script>
+
 </body>
 </html>
