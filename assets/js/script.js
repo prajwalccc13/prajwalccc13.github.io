@@ -1,32 +1,7 @@
-// ── Wait for DOM before running anything ──────────────
+// Ensure all HTML is loaded before trying to access elements
 document.addEventListener("DOMContentLoaded", () => {
 
-  // ── Theme ─────────────────────────────────────────────
-  const root = document.documentElement;
-  const themeIcon = document.getElementById("themeIcon");
-
-  function applyTheme(t) {
-    root.setAttribute("data-theme", t);
-    root.setAttribute("data-bs-theme", t);
-    const meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute("content", t === "dark" ? "#000000" : "#ffffff");
-    if (themeIcon) themeIcon.className = t === "dark" ? "bi bi-moon-stars" : "bi bi-sun";
-  }
-
-  // Default to light unless user previously chose dark
-  const saved = localStorage.getItem("pc-theme");
-  applyTheme(saved === "dark" ? "dark" : "light");
-
-  const themeBtn = document.getElementById("themeBtn");
-  if (themeBtn) {
-    themeBtn.addEventListener("click", () => {
-      const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
-      localStorage.setItem("pc-theme", next);
-      applyTheme(next);
-    });
-  }
-
-  // ── Copy BibTeX ────────────────────────────────────────
+  // ── Copy BibTeX to Clipboard ────────────────────────────────
   document.querySelectorAll("[data-bibtex]").forEach(btn => {
     btn.addEventListener("click", async () => {
       const el = document.getElementById(btn.getAttribute("data-bibtex"));
@@ -36,12 +11,19 @@ document.addEventListener("DOMContentLoaded", () => {
         const orig = btn.innerHTML;
         btn.innerHTML = '<i class="bi bi-check2"></i> Copied';
         btn.disabled = true;
-        setTimeout(() => { btn.innerHTML = orig; btn.disabled = false; }, 1500);
-      } catch (_) {}
+        
+        // Revert back to original text after 1.5s
+        setTimeout(() => { 
+          btn.innerHTML = orig; 
+          btn.disabled = false; 
+        }, 1500);
+      } catch (_) {
+        console.error("Clipboard write failed");
+      }
     });
   });
 
-  // ── Intersection Observer (fade-in) ───────────────────
+  // ── Intersection Observer (Fade-in Animations) ──────────────
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -49,8 +31,12 @@ document.addEventListener("DOMContentLoaded", () => {
         observer.unobserve(e.target);
       }
     });
-  }, { threshold: 0.10, rootMargin: "0px 0px -5% 0px" });
+  }, { 
+    threshold: 0.10, 
+    rootMargin: "0px 0px -5% 0px" 
+  });
 
+  // Find all elements with class .io and observe them
   document.querySelectorAll(".io").forEach(el => observer.observe(el));
 
 });

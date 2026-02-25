@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="light" data-bs-theme="light">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -79,11 +79,6 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <!-- Favicon for .ico file -->
   <link rel="icon" type="image/x-icon" href="assets/files/favicon.ico">
-
-
-
-
-
 </head>
 
 <body>
@@ -103,11 +98,8 @@
           <a href="#arsenal">Skills</a>
         </div>
         <div class="nav-actions">
-          <button id="themeBtn" class="btn-ghost" style="padding: 6px 10px; border-radius: 6px;" aria-label="Toggle dark/light theme">
-            <i class="bi bi-sun" id="themeIcon" aria-hidden="true"></i>
-          </button>
           <a class="btn-base btn-solid" href="assets/files/prajwal_chaudhary_resume.pdf" download aria-label="Download Resume PDF">
-            <i class="bi bi-download" aria-hidden="true"></i> Resume
+            <i class="bi bi-download" aria-hidden="true"></i> <span class="hide-mobile">Resume</span>
           </a>
         </div>
       </div>
@@ -135,8 +127,8 @@
           <a href="#projects" class="btn-base btn-solid">View Projects</a>
           <a href="#publications" class="btn-base">Research</a>
           <a href="mailto:prajwalc133@gmail.com" class="btn-base btn-ghost">
-  prajwalc133@gmail.com <i class="bi bi-arrow-right" aria-hidden="true"></i>
-</a>
+            prajwalc133@gmail.com <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </a>
         </div>
       </header>
     </div>
@@ -151,7 +143,7 @@
 
         <div class="card-grid">
 
-          <!-- Auto Agent ML (Now semantic <article>) -->
+          <!-- Auto Agent ML -->
           <article class="card io io-d1">
             <div class="card-top">
               <h3 class="card-title">Auto Agent ML</h3>
@@ -180,9 +172,6 @@
               <a href="https://github.com/prajwalccc13/AutoAgentML" class="btn-base" target="_blank" rel="noreferrer" aria-label="View Auto Agent ML on GitHub">
                 <i class="bi bi-github" aria-hidden="true"></i> GitHub
               </a>
-              <!-- <a href="#" class="btn-base" target="_blank" rel="noreferrer" aria-label="View Live Demo of Auto Agent ML">
-                <i class="bi bi-play-circle" aria-hidden="true"></i> Demo
-              </a> -->
             </div>
           </article>
 
@@ -213,9 +202,6 @@
               <a href="https://github.com/prajwalccc13/POC-RaspPi-Backend-new" class="btn-base" target="_blank" rel="noreferrer" aria-label="View Cauliflower Disease Net on GitHub">
                 <i class="bi bi-github" aria-hidden="true"></i> GitHub
               </a>
-              <!-- <a href="#" class="btn-base" target="_blank" rel="noreferrer" aria-label="View Live Demo of Cauliflower Disease Net">
-                <i class="bi bi-play-circle" aria-hidden="true"></i> Demo
-              </a> -->
             </div>
           </article>
 
@@ -234,7 +220,6 @@
             <h2 id="experience-heading" class="section-heading io io-d1">Research timeline.</h2>
 
             <div class="timeline io io-d2">
-              <!-- Wrapping experience in article/time tags for parsers -->
               <article class="t-item">
                 <time class="t-date" datetime="2025-02/2025-06">Feb 2025 — Jun 2025</time>
                 <h3 class="t-role">Research Intern</h3>
@@ -271,7 +256,6 @@
 
         <ul class="pub-list">
           
-          <!-- Uses itemscope for ScholarlyArticle -->
           <li class="pub-item io io-d1" itemscope itemtype="https://schema.org/ScholarlyArticle">
             <div>
               <h3 class="pub-title" itemprop="headline">Deep Learning CNN Models for Diseases Classification in Cauliflower Leaves</h3>
@@ -356,45 +340,6 @@
       </section>
     </div>
 
-    <hr class="divider">
-
-    <!-- ─── Insights ────────────────────────────────────── -->
-    <!-- <div class="w">
-      <section id="insights" class="section" aria-labelledby="insights-heading">
-        <div class="section-label io" aria-hidden="true">05 — AI Insights</div>
-        <h2 id="insights-heading" class="section-heading io io-d1">Technical deep dives.</h2>
-
-        <div class="card-grid">
-          <article class="card insight-card io io-d1" style="padding: 24px;">
-            <div class="section-label" style="margin-bottom: 10px; color: #0891b2;">Coming soon</div>
-            <h3 class="card-title" style="margin-bottom: 12px;">Agent Orchestration Patterns</h3>
-            <p class="card-body" style="margin-bottom: 20px; font-size: 0.9rem;">
-              A walkthrough of verification loops, safety checks, and reliability patterns
-              in multi-agent LLM systems.
-            </p>
-            <div class="card-actions">
-              <a href="#" class="btn-base" aria-label="Read on Medium"><i class="bi bi-medium" aria-hidden="true"></i> Medium</a>
-              <a href="#" class="btn-base" aria-label="View Gist"><i class="bi bi-file-earmark-code" aria-hidden="true"></i> Gist</a>
-            </div>
-          </article>
-          
-          <article class="card insight-card io io-d2" style="padding: 24px;">
-            <div class="section-label" style="margin-bottom: 10px; color: #0891b2;">Coming soon</div>
-            <h3 class="card-title" style="margin-bottom: 12px;">Real-time Vision for Robotics</h3>
-            <p class="card-body" style="margin-bottom: 20px; font-size: 0.9rem;">
-              Notes on latency budgets, batching strategies, and deployment
-              tradeoffs for live PyTorch video pipelines.
-            </p>
-            <div class="card-actions">
-              <a href="#" class="btn-base" aria-label="Read Write-up"><i class="bi bi-journal-code" aria-hidden="true"></i> Write-up</a>
-              <a href="#" class="btn-base" aria-label="View Code"><i class="bi bi-github" aria-hidden="true"></i> Code</a>
-            </div>
-          </article>
-        </div>
-      </section>
-    </div> -->
-
-
   </main>
 
   <!-- ─── Footer ──────────────────────────────────────── -->
@@ -430,8 +375,9 @@
   </div>
 
   <!-- ─── Scripts ─────────────────────────────────────── -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+  <!-- Note: Added defer to bootstrap bundle to prevent render-blocking -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
   <script src="assets/js/script.js" defer></script>
-  
+
 </body>
 </html>
