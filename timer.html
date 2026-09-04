@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birthday Diary Timer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f0ebe1;
+      font-family: 'Nunito', sans-serif;
+      color: #5c524e;
+      overflow: hidden;
+    }
+
+    /* Diary Container */
+    .book {
+      position: relative;
+      width: 360px;
+      height: 480px;
+      perspective: 1500px;
+    }
+
+    .book-cover {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #d8b4a0;
+      border-radius: 16px 24px 24px 16px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15), inset -5px 0 10px rgba(0,0,0,0.05);
+      top: -6px;
+      left: -8px;
+      width: calc(100% + 12px);
+      height: calc(100% + 12px);
+      z-index: 1;
+    }
+
+    /* Common Page Styles */
+    .page {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: #fffdf9;
+      border-radius: 12px 20px 20px 12px;
+      padding: 36px 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      border-left: 4px solid #e8e2d5;
+      transform-origin: left center;
+      transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+      backface-visibility: hidden;
+      z-index: 2;
+    }
+
+    /* Page Setup Side (Page 1) */
+    .page-1 {
+      z-index: 3;
+    }
+
+    .page-1.flipped {
+      transform: rotateY(-180deg);
+    }
+
+    /* Page Timer Side (Page 2) */
+    .page-2 {
+      z-index: 2;
+      transform: rotateY(0deg);
+    }
+
+    /* Diary Aesthetics */
+    .handwritten {
+      font-family: 'Caveat', cursive;
+      font-size: 2rem;
+      color: #9b829c;
+    }
+
+    h2 {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #b5a89f;
+      margin-top: -8px;
+    }
+
+    .inputs-container {
+      display: flex;
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    .input-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .input-box input {
+      width: 70px;
+      height: 70px;
+      border-radius: 20px;
+      border: 2px solid #f2e9e1;
+      background: #faf6f0;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #6b5b95;
+      outline: none;
+    }
+
+    .input-box input:focus {
+      border-color: #f3c5ff;
+    }
+
+    .input-box span {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #a89f91;
+      text-transform: uppercase;
+    }
+
+    /* Simple Flip-Clock Card */
+    .timer-display {
+      position: relative;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin: auto 0;
+    }
+
+    .flip-card {
+      background: #fbf8f3;
+      border: 1px solid #efe8dd;
+      border-radius: 16px;
+      width: 90px;
+      height: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #6b5b95;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.03);
+    }
+
+    .colon {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #d1c7bd;
+    }
+
+    /* Buttons */
+    .btn {
+      width: 100%;
+      padding: 14px;
+      border-radius: 100px;
+      border: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-pastel {
+      background: #ffe5ec;
+      color: #804e5d;
+    }
+
+    .btn-pastel:hover {
+      background: #ffc2d1;
+    }
+
+    .btn-outline {
+      background: #f5efe6;
+      color: #7a6f68;
+    }
+
+    .btn-outline:hover {
+      background: #e8dfd5;
+    }
+
+    .controls {
+      display: flex;
+      gap: 10px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="book">
+    <div class="book-cover"></div>
+
+    <div class="page page-1" id="page1">
+      <div style="text-align: center;">
+        <span class="handwritten">Make a Wish</span>
+        <h2>Set Duration</h2>
+      </div>
+
+      <div class="inputs-container">
+        <div class="input-box">
+          <input type="number" id="in-min" min="0" max="99" value="05">
+          <span>Minutes</span>
+        </div>
+        <div class="input-box">
+          <input type="number" id="in-sec" min="0" max="59" value="00">
+          <span>Seconds</span>
+        </div>
+      </div>
+
+      <button class="btn btn-pastel" id="flip-to-timer">Turn Page & Start</button>
+    </div>
+
+    <div class="page page-2" id="page2">
+      <div style="text-align: center;">
+        <span class="handwritten">Cake Time</span>
+        <h2>Counting Down</h2>
+      </div>
+
+      <div class="timer-display">
+        <div class="flip-card" id="disp-min">05</div>
+        <span class="colon">:</span>
+        <div class="flip-card" id="disp-sec">00</div>
+      </div>
+
+      <div class="controls">
+        <button class="btn btn-pastel" id="pause-btn">Pause</button>
+        <button class="btn btn-outline" id="flip-to-setup">Edit</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let totalSeconds = 0;
+    let timerId = null;
+    let isPaused = false;
+
+    // Elements
+    const page1 = document.getElementById('page1');
+    const inMin = document.getElementById('in-min');
+    const inSec = document.getElementById('in-sec');
+    
+    const dispMin = document.getElementById('disp-min');
+    const dispSec = document.getElementById('disp-sec');
+    
+    const btnFlipToTimer = document.getElementById('flip-to-timer');
+    const btnFlipToSetup = document.getElementById('flip-to-setup');
+    const btnPause = document.getElementById('pause-btn');
+
+    function updateDisplay() {
+      const m = Math.floor(totalSeconds / 60);
+      const s = totalSeconds % 60;
+      dispMin.textContent = String(m).padStart(2, '0');
+      dispSec.textContent = String(s).padStart(2, '0');
+    }
+
+    function startTimer() {
+      clearInterval(timerId);
+      isPaused = false;
+      btnPause.textContent = 'Pause';
+
+      timerId = setInterval(() => {
+        if (totalSeconds > 0) {
+          totalSeconds--;
+          updateDisplay();
+        } else {
+          clearInterval(timerId);
+          dispMin.textContent = "🎉";
+          dispSec.textContent = "🎂";
+        }
+      }, 1000);
+    }
+
+    // Page Flip: Setup -> Timer
+    btnFlipToTimer.addEventListener('click', () => {
+      const mins = parseInt(inMin.value, 10) || 0;
+      const secs = parseInt(inSec.value, 10) || 0;
+      
+      totalSeconds = (mins * 60) + secs;
+      if (totalSeconds <= 0) return;
+
+      updateDisplay();
+      page1.classList.add('flipped');
+      startTimer();
+    });
+
+    // Page Flip: Timer -> Setup
+    btnFlipToSetup.addEventListener('click', () => {
+      clearInterval(timerId);
+      page1.classList.remove('flipped');
+    });
+
+    // Pause / Resume Toggle
+    btnPause.addEventListener('click', () => {
+      if (totalSeconds <= 0) return;
+
+      if (isPaused) {
+        startTimer();
+        btnPause.textContent = 'Pause';
+      } else {
+        clearInterval(timerId);
+        isPaused = true;
+        btnPause.textContent = 'Resume';
+      }
+    });
+  </script>
+</body>
+</html>
