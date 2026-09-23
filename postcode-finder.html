@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Postcode Run Finder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --yellow: #F2B705;
+    --ink: #1C1B17;
+    --shell: #2A2925;
+    --key: #3A3833;
+    --key-text: #F4F2EC;
+    --screen: #D8DCC4;
+    --screen-ink: #1F2418;
+    --paper: #EDEAE2;
+    --muted: #6B6960;
+    --red: #D7261E;
+    --bg: #E4E1D8;
+    --page-text: #1C1B17;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #161613;
+      --page-text: #EDEAE2;
+      --shell: #24231F;
+      --key: #34322D;
+      --screen: #C9CDB3;
+      --muted: #9A978C;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #161613;
+    --page-text: #EDEAE2;
+    --shell: #24231F;
+    --key: #34322D;
+    --screen: #C9CDB3;
+    --muted: #9A978C;
+  }
+  *, *::before, *::after { box-sizing: inherit; }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  body {
+    margin: 0;
+    min-height: 100%;
+    background: var(--bg);
+    color: var(--page-text);
+    font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+  }
+  main {
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 16px 14px 24px;
+  }
+  .device {
+    background: var(--shell);
+    border-radius: 28px 28px 34px 34px;
+    padding: 16px 14px 18px;
+    border-top: 10px solid var(--yellow);
+    box-shadow: 0 2px 0 #00000040, 0 18px 40px -20px #00000080;
+  }
+  .brand {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    color: var(--yellow);
+    padding: 0 6px 10px;
+  }
+  .brand h1 {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 800;
+    font-stretch: 75%;
+    letter-spacing: 0.01em;
+  }
+  .brand span { font-size: 0.8rem; color: #A9A69B; font-stretch: 85%; }
+
+  .screen {
+    background: var(--screen);
+    color: var(--screen-ink);
+    border-radius: 12px;
+    padding: 12px 14px 14px;
+    box-shadow: inset 0 3px 0 #0000002a, inset 0 0 0 2px #0000001a;
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+  }
+  .digits {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+  .digit {
+    font-size: clamp(2.8rem, 15vw, 3.6rem);
+    font-weight: 800;
+    font-stretch: 70%;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+    line-height: 1.1;
+    border-bottom: 3px solid #1F241840;
+  }
+  .digit.empty { color: #1F241830; }
+  .digit.cursor { border-bottom-color: var(--screen-ink); }
+
+  .result { margin-top: 12px; flex: 1; }
+  .hint { font-size: 0.95rem; color: #1F2418A0; margin: 6px 0 0; line-height: 1.4; }
+  .count {
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin: 0 0 6px;
+    color: var(--red);
+  }
+  .match {
+    padding: 8px 0;
+    border-top: 1px solid #1F241830;
+  }
+  .match:first-of-type { border-top: 0; }
+  .area {
+    font-size: 1.7rem;
+    font-weight: 900;
+    font-stretch: 80%;
+    line-height: 1.05;
+    margin: 0;
+  }
+  .detail { margin: 3px 0 0; font-size: 0.9rem; line-height: 1.35; }
+  .detail strong { font-weight: 700; }
+  .none .area { color: var(--red); }
+
+  .keys {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 16px;
+  }
+  .keys button {
+    appearance: none;
+    border: 0;
+    border-radius: 14px;
+    background: var(--key);
+    color: var(--key-text);
+    font: inherit;
+    font-size: 1.7rem;
+    font-weight: 700;
+    font-stretch: 85%;
+    height: 64px;
+    box-shadow: 0 4px 0 #00000070;
+    cursor: pointer;
+    touch-action: manipulation;
+    transition: transform 60ms, box-shadow 60ms;
+  }
+  .keys button:active, .keys button.pressed {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 #00000070;
+  }
+  .keys button:focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; }
+  .keys .fn { background: var(--yellow); color: var(--ink); font-size: 1.05rem; font-weight: 800; }
+  .keys .del { font-size: 1.05rem; }
+
+  details {
+    margin-top: 22px;
+    font-size: 0.92rem;
+  }
+  summary {
+    cursor: pointer;
+    font-weight: 700;
+    padding: 10px 2px;
+  }
+  summary:focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; }
+  .list { margin: 4px 0 0; padding: 0; list-style: none; }
+  .list li { padding: 8px 2px; border-top: 1px solid color-mix(in srgb, var(--page-text) 18%, transparent); line-height: 1.4; }
+  .list b { display: block; font-stretch: 85%; }
+  .list span { color: var(--muted); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .keys button { transition: none; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <div class="device">
+    <div class="brand">
+      <h1>Postcode Run Finder</h1>
+      <span>AirRoad board</span>
+    </div>
+
+    <div class="screen" aria-live="polite">
+      <div class="digits" id="digits" aria-label="Postcode entered"></div>
+      <div class="result" id="result"></div>
+    </div>
+
+    <div class="keys" id="keys">
+      <button data-k="1">1</button><button data-k="2">2</button><button data-k="3">3</button>
+      <button data-k="4">4</button><button data-k="5">5</button><button data-k="6">6</button>
+      <button data-k="7">7</button><button data-k="8">8</button><button data-k="9">9</button>
+      <button data-k="C" class="fn" aria-label="Clear">Clear</button>
+      <button data-k="0">0</button>
+      <button data-k="D" class="del" aria-label="Delete last digit">⌫ Del</button>
+    </div>
+  </div>
+
+  <details>
+    <summary>See all areas and postcodes</summary>
+    <ul class="list" id="list"></ul>
+  </details>
+</main>
+
+<script>
+// [from, to, note]
+const AREAS = [
+  ["Locals", [[2000,2249],[2555,2570],[2745,2770],[2775,2775,"Wisemans Ferry"]]],
+  ["Gosford", [[2250,2263]]],
+  ["Newcastle", [[2264,2320],[2322,2327],[2334,2335],[2415,2415,"Shroud Road only"],[2420,2420],[2421,2421],[2425,2425]]],
+  ["Newcastle Valley", [[2321,2321],[2328,2330],[2333,2333],[2336,2337],[2324,2324,"Hawks Nest and Tea Gardens only"]]],
+  ["Tamworth", [[2338,2415]]],
+  ["Taree / Port Mac", [[2312,2312,"Nabiac only"],[2422,2440],[2441,2441,"Yarrahapinni only"],[2443,2446]]],
+  ["Coffs Harbour", [[2441,2441,"Except Yarrahapinni"],[2447,2456]]],
+  ["Grafton", [[2460,2468]]],
+  ["Ballina and Lismore", [[2469,2480]]],
+  ["W'Gong", [[2500,2535],[2540,2541],[2571,2578],[2560,2560,"Appin only"]]],
+  ["Near South Coast", [[2536,2536],[2538,2539]]],
+  ["Far South Coast", [[2545,2551],[2537,2537]]],
+  ["Canberra", [[2579,2583],[2600,2622],[2624,2626],[2627,2633],[2900,2913]]],
+  ["Blue Mountains", [[2773,2786]]],
+  ["Albury", [[2640,2644],[2646,2647],[3690,3690,"Barnawartha, Wodonga"],[3694,3694,"Bandiana"]]],
+  ["Wagga Wagga", [[2584,2594],[2645,2645],[2649,2649],[2650,2709],[2711,2711],[2720,2730]]],
+  ["Bathurst", [[2787,2787],[2790,2790],[2795,2796]]],
+  ["Orange", [[2791,2794],[2797,2810],[2865,2866],[2870,2871],[2875,2875],[2877,2877]]],
+  ["Dubbo", [[2820,2840],[2843,2844],[2868,2869],[2873,2876]]],
+  ["Mudgee", [[2845,2850],[2852,2852]]],
+  ["NSW & NT via SA", [[2880,2880,"Broken Hill"],[870,870,"Alice Springs"],[872,872,"Ayers Rock"],[861,861,"Tennant Creek"],[2836,2836,"Wilcannia, White Cliffs"],[2878,2878,"Ivanhoe"],[2879,2879,"Menindee"]]],
+  ["NSW via QLD", [[2481,2490]]],
+  ["NSW via VIC", [[2648,2648],[2710,2710],[2712,2717],[2731,2739]]],
+];
+
+const pad = n => String(n).padStart(4, "0");
+const fmt = ([a,b,note]) => (a === b ? pad(a) : pad(a) + "–" + pad(b)) + (note ? " " + note : "");
+
+function lookup(code) {
+  const n = parseInt(code, 10);
+  const hits = [];
+  for (const [name, ranges] of AREAS) {
+    const matched = ranges.filter(([a,b]) => n >= a && n <= b);
+    if (matched.length) hits.push({ name, matched });
+  }
+  return hits;
+}
+
+let code = "";
+const digitsEl = document.getElementById("digits");
+const resultEl = document.getElementById("result");
+
+function esc(s) { return s.replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+
+function render() {
+  digitsEl.innerHTML = [0,1,2,3].map(i => {
+    const ch = code[i];
+    const cls = ch ? "digit" : "digit empty" + (i === code.length ? " cursor" : "");
+    return `<div class="${cls}">${ch ?? "0"}</div>`;
+  }).join("");
+
+  if (code.length < 4) {
+    resultEl.innerHTML = `<p class="hint">${code.length === 0
+      ? "Type a 4-digit postcode to see which area it goes to."
+      : (4 - code.length) + " more digit" + (code.length === 3 ? "" : "s") + " to go."}</p>`;
+    return;
+  }
+
+  const hits = lookup(code);
+  if (!hits.length) {
+    resultEl.innerHTML = `<div class="match none"><p class="area">Not on the board</p>
+      <p class="detail">${code} isn't listed. Check the postcode or ask the supervisor.</p></div>`;
+    return;
+  }
+  const head = hits.length > 1 ? `<p class="count">Listed in ${hits.length} areas — check the suburb</p>` : "";
+  resultEl.innerHTML = head + hits.map(h => `
+    <div class="match">
+      <p class="area">${esc(h.name)}</p>
+      <p class="detail">${h.matched.map(r => esc(fmt(r))).join("<br>")}</p>
+    </div>`).join("");
+}
+
+function press(k) {
+  if (k === "C") code = "";
+  else if (k === "D") code = code.slice(0, -1);
+  else if (/^\d$/.test(k)) code = code.length >= 4 ? k : code + k;
+  render();
+}
+
+document.getElementById("keys").addEventListener("click", e => {
+  const b = e.target.closest("button");
+  if (b) press(b.dataset.k);
+});
+
+document.addEventListener("keydown", e => {
+  let k = null;
+  if (/^\d$/.test(e.key)) k = e.key;
+  else if (e.key === "Backspace") k = "D";
+  else if (e.key === "Escape" || e.key === "Delete") k = "C";
+  if (!k) return;
+  e.preventDefault();
+  press(k);
+  const btn = document.querySelector(`[data-k="${k}"]`);
+  if (btn) { btn.classList.add("pressed"); setTimeout(() => btn.classList.remove("pressed"), 90); }
+});
+
+document.getElementById("list").innerHTML = AREAS.map(([name, ranges]) =>
+  `<li><b>${esc(name)}</b><span>${ranges.map(r => esc(fmt(r))).join(", ")}</span></li>`).join("");
+
+render();
+</script>
+</body>
+</html>
