@@ -28,8 +28,8 @@
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Prajwal Chaudhary",
-    "jobTitle": "AI Engineer",
-    "description": "Computer Engineer specializing in Artificial Intelligence, autonomous agents, and deep learning.",
+    "jobTitle": "Software Engineer",
+    "description": "Software engineer building Flutter apps, Python and Django backends, and machine learning features.",
     "url": "https://prajwalccc13.github.io/",
     "address": {
       "@type": "PostalAddress",
@@ -49,14 +49,16 @@
       }
     ],
     "knowsAbout": [
-      "Artificial Intelligence",
       "Software Engineering",
-      "Machine Learning",
-      "LLM Orchestration",
-      "Computer Vision",
+      "Flutter",
+      "Dart",
       "Python",
-      "PyTorch",
-      "TensorFlow"
+      "Django",
+      "FastAPI",
+      "Firebase",
+      "SQL",
+      "Machine Learning",
+      "PyTorch"
     ],
     "hasCredential": {
       "@type": "EducationalOccupationalCredential",
@@ -70,6 +72,7 @@
     ]
   }
   </script>
+
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -102,7 +105,7 @@
   <!-- Background Blueprint Pattern -->
   <div class="bg-pattern" aria-hidden="true"></div>
 
-  <!-- ─── Navbar ─────────────────────────────────────── -->
+  <!-- Navbar -->
   <nav class="nav-wrap" aria-label="Main Navigation">
     <div class="w">
       <div class="nav-inner">
@@ -126,24 +129,26 @@
   <!-- Wrapping primary content in <main> for parsers -->
   <main>
 
-    <!-- ─── Hero ───────────────────────────────────────── -->
-    <div class="w">
+    <!--  Hero  -->
+        <div class="w">
       <header id="top" class="hero">
         <div class="hero-eyebrow io">
-          <span class="status-dot" aria-hidden="true"></span> AI Engineer · Sydney, AU
+          <span class="status-dot" aria-hidden="true"></span> Software Engineer · Sydney, AU
         </div>
         <h1 class="hero-title io io-d1">
-          Engineering<br>
-          <span class="text-gradient">Autonomous Intelligence.</span>
+          Flutter apps,<br>
+          <span class="text-gradient">Python backends.</span>
         </h1>
         <p class="hero-sub io io-d2">
-          <strong>Hi, I'm Prajwal.</strong> A Master of IT in AI Graduate from Macquarie University specializing in LLM
-          orchestration,
-          computer vision, and end-to-end deep learning pipelines.
+          <strong>Hi, I'm Prajwal.</strong> I'm a software engineer with a Master of IT in AI from Macquarie
+          University. I enjoy taking projects from the first commit to a working deployment, and adding
+          machine learning where it's genuinely useful.
         </p>
         <div class="hero-actions io io-d3">
           <a href="#projects" class="btn-base btn-solid">View Projects</a>
-          <a href="#publications" class="btn-base">Research</a>
+          <a href="https://github.com/prajwalccc13" class="btn-base" target="_blank" rel="noreferrer">
+            <i class="bi bi-github" aria-hidden="true"></i> GitHub
+          </a>
           <a href="mailto:prajwalc133@gmail.com" class="btn-base btn-ghost">
             prajwalc133@gmail.com <i class="bi bi-arrow-right" aria-hidden="true"></i>
           </a>
@@ -151,9 +156,11 @@
       </header>
     </div>
 
+
+
     <hr class="divider">
 
-    <!-- ─── Projects ───────────────────────────────────── -->
+    <!--  Projects  -->
     <div class="w">
       <section id="projects" class="section" aria-labelledby="projects-heading">
         <div class="section-label io" aria-hidden="true">01 — Selected Work</div>
@@ -161,9 +168,45 @@
 
         <div class="card-grid">
 
+          <!-- Subbies -->
+          <article class="card io io-d1">
+            <div class="card-top">
+              <h3 class="card-title">Subbies - Subscription Tracker</h3>
+              <span class="card-stat" aria-label="Live demo available">LIVE DEMO</span>
+            </div>
+            <p class="card-body">
+              Cross-platform app that tracks subscriptions, works out the next renewal date, and warns
+              you before a free trial turns into a charge. Works offline without an account, and syncs
+              across devices once you sign in.
+            </p>
+            <div class="tags" aria-label="Technologies Used">
+              <span class="tag">Flutter</span>
+              <span class="tag">Dart</span>
+              <span class="tag">Firebase Auth</span>
+              <span class="tag">Firestore</span>
+              <span class="tag">Unit Tests</span>
+            </div>
+            <div class="code-block" aria-hidden="true">
+              <pre>[UI] → [Controllers]
+  → [SubscriptionRepository]
+      ├── Device storage (signed out)
+      ├── Firestore (signed in)
+      └── In-memory (demo)</pre>
+            </div>
+            <div class="card-actions">
+              <a href="https://subbies-app.web.app/demo" class="btn-base btn-solid" target="_blank" rel="noreferrer"
+                aria-label="Open the Subbies live demo">
+                <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i> Live demo
+              </a>
+              <a href="https://github.com/prajwalccc13/subbies" class="btn-base" target="_blank" rel="noreferrer"
+                aria-label="View Subbies on GitHub">
+                <i class="bi bi-github" aria-hidden="true"></i> GitHub
+              </a>
+            </div>
+          </article>
 
           <!-- Multi-Modal RAG Chatbot -->
-          <article class="card io io-d3">
+          <article class="card io io-d2">
             <div class="card-top">
               <h3 class="card-title">Rag Search - Multi-Modal RAG Chatbot</h3>
               <span class="card-stat" aria-label="CI/CD Hallucination Gate">CI/CD GATED</span>
@@ -196,7 +239,7 @@
           </article>
 
           <!-- Auto Agent ML -->
-          <article class="card io io-d1">
+          <article class="card io io-d3">
             <div class="card-top">
               <h3 class="card-title">Auto Agent ML</h3>
               <span class="card-stat" aria-label="System Architecture">SYSTEM ARCH</span>
@@ -229,32 +272,35 @@
           </article>
 
 
-          <!-- Cauliflower Disease -->
-          <article class="card io io-d2">
+          <!-- Online Retail Dashboard -->
+          <article class="card io io-d1">
             <div class="card-top">
-              <h3 class="card-title">Cauliflower Disease Net</h3>
-              <span class="card-stat" aria-label="93% Accuracy Achieved">93% ACC</span>
+              <h3 class="card-title">E-commerce Sales Dashboard</h3>
+              <span class="card-stat" aria-label="Live demo available">LIVE DEMO</span>
             </div>
             <p class="card-body">
-              End-to-end CNN solution for disease detection in cauliflower crops. Uses transfer
-              learning for classification, SQL for experiment tracking, and integrates physical
-              hardware for image capture and automated pesticide application.
+              Interactive dashboard that cleans raw retail transaction data and turns it into sales
+              trends, top products, geographic performance and customer behaviour, with filters
+              anyone can explore in the browser.
             </p>
             <div class="tags" aria-label="Technologies Used">
-              <span class="tag">TensorFlow</span>
-              <span class="tag">Computer Vision</span>
-              <span class="tag">Django</span>
-              <span class="tag">Flutter</span>
-              <span class="tag">SQL</span>
+              <span class="tag">Python</span>
+              <span class="tag">Pandas</span>
+              <span class="tag">Plotly</span>
+              <span class="tag">Streamlit</span>
             </div>
             <div class="code-block" aria-hidden="true">
-              <pre>[Camera] → [Preprocess] → [CNN]
-     → [Classification]
-     → [Actuator / SQL log]</pre>
+              <pre>[Raw transactions] → [Clean / Transform]
+  → [Aggregations]
+  → [Interactive charts + filters]</pre>
             </div>
             <div class="card-actions">
-              <a href="https://github.com/prajwalccc13/POC-RaspPi-Backend-new" class="btn-base" target="_blank"
-                rel="noreferrer" aria-label="View Cauliflower Disease Net on GitHub">
+              <a href="https://online-retails-dashboard.streamlit.app/" class="btn-base btn-solid" target="_blank"
+                rel="noreferrer" aria-label="Open the dashboard live demo">
+                <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i> Live demo
+              </a>
+              <a href="https://github.com/prajwalccc13/online-retail-dashboard" class="btn-base" target="_blank"
+                rel="noreferrer" aria-label="View the dashboard on GitHub">
                 <i class="bi bi-github" aria-hidden="true"></i> GitHub
               </a>
             </div>
@@ -263,6 +309,7 @@
         </div>
       </section>
     </div>
+
 
     <hr class="divider">
 
@@ -377,7 +424,7 @@
 
     <hr class="divider">
 
-    <!-- ─── Arsenal ─────────────────────────────────────── -->
+    <!--  Arsenal  -->
     <div class="w">
       <section id="arsenal" class="section" aria-labelledby="skills-heading">
         <div class="section-label io" aria-hidden="true">04 — Technical Arsenal</div>
@@ -385,26 +432,43 @@
 
         <div class="skills-grid io io-d2" aria-label="List of technical skills">
           <div class="skill-chip"><i class="bi bi-filetype-py" aria-hidden="true"></i> Python</div>
-          <div class="skill-chip"><i class="bi bi-cpu" aria-hidden="true"></i> PyTorch</div>
-          <div class="skill-chip"><i class="bi bi-diagram-3" aria-hidden="true"></i> TensorFlow</div>
+          <div class="skill-chip"><i class="bi bi-code-slash" aria-hidden="true"></i> Dart</div>
+          <div class="skill-chip"><i class="bi bi-phone" aria-hidden="true"></i> Flutter</div>
+          <div class="skill-chip"><i class="bi bi-box-seam" aria-hidden="true"></i> Django</div>
+          <div class="skill-chip"><i class="bi bi-lightning" aria-hidden="true"></i> FastAPI</div>
+          <div class="skill-chip"><i class="bi bi-fire" aria-hidden="true"></i> Firebase</div>
           <div class="skill-chip"><i class="bi bi-database" aria-hidden="true"></i> SQL</div>
           <div class="skill-chip"><i class="bi bi-boxes" aria-hidden="true"></i> MongoDB</div>
-          <div class="skill-chip"><i class="bi bi-box-seam" aria-hidden="true"></i> Django</div>
+          <div class="skill-chip"><i class="bi bi-git" aria-hidden="true"></i> Git</div>
+          <div class="skill-chip"><i class="bi bi-cpu" aria-hidden="true"></i> PyTorch</div>
+          <div class="skill-chip"><i class="bi bi-diagram-3" aria-hidden="true"></i> TensorFlow</div>
           <div class="skill-chip"><i class="bi bi-bar-chart" aria-hidden="true"></i> Pandas</div>
         </div>
 
-        <div class="mt-5 io io-d3"
-          style="font-size: 0.95rem; color: var(--text); background: var(--surface2); padding: 16px 20px; border-radius: var(--r); display: inline-flex; align-items: center; border: 1px solid var(--border);">
-          <i class="bi bi-patch-check-fill me-2" style="color: #0891b2; font-size: 1.1rem;" aria-hidden="true"></i>
-          Google Advanced Data Analytics Certificate &mdash; <time datetime="2025-01"
-            style="color: var(--muted); margin-left: 6px;">January 2025</time>
+        <div class="mt-5 io io-d3" style="display: flex; flex-wrap: wrap; gap: 12px;">
+          <a href="https://learn.microsoft.com/api/credentials/share/en-us/PrajwalChaudhary/3D439FDAC0903179?sharingId=3F5A9443692EA07"
+            target="_blank" rel="noreferrer" aria-label="Verify Microsoft Certified: Azure Fundamentals credential"
+            style="font-size: 0.95rem; color: var(--text); text-decoration: none; background: var(--surface2); padding: 16px 20px; border-radius: var(--r); display: inline-flex; align-items: center; border: 1px solid var(--border);">
+            <i class="bi bi-patch-check-fill me-2" style="color: #0891b2; font-size: 1.1rem;" aria-hidden="true"></i>
+            Microsoft Certified: Azure Fundamentals
+            <span style="color: var(--muted); margin-left: 6px;">&mdash; Verify <i class="bi bi-box-arrow-up-right"
+                aria-hidden="true"></i></span>
+          </a>
+          <div
+            style="font-size: 0.95rem; color: var(--text); background: var(--surface2); padding: 16px 20px; border-radius: var(--r); display: inline-flex; align-items: center; border: 1px solid var(--border);">
+            <i class="bi bi-patch-check-fill me-2" style="color: #0891b2; font-size: 1.1rem;" aria-hidden="true"></i>
+            Google Advanced Data Analytics Certificate &mdash; <time datetime="2025-01"
+              style="color: var(--muted); margin-left: 6px;">January 2025</time>
+          </div>
         </div>
       </section>
     </div>
 
+
+
   </main>
 
-  <!-- ─── Footer ──────────────────────────────────────── -->
+  <!--  Footer  -->
   <hr class="divider">
   <div class="w">
     <footer aria-label="Site Footer">
@@ -438,7 +502,7 @@
     </footer>
   </div>
 
-  <!-- ─── Scripts ─────────────────────────────────────── -->
+  <!--  Scripts  -->
   <!-- Note: Added defer to bootstrap bundle to prevent render-blocking -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
   <script src="assets/js/script.js" defer></script>
